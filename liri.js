@@ -26,6 +26,44 @@ switch (userInput) {
 		break;
 };
 
+// Twitter Request
+function showTweets(){
+
+var Twitter = require('twitter');
+
+	var client = new Twitter({
+		consumer_key: consumerKey,
+		consumer_secret: consumerSecret,
+		access_token_key: tokenKey,
+		access_token_secret: tokenSecret
+	});
+
+	
+	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=@claire_liri&count=3', function (error, tweets, response) {
+		if (!error) {
+			for (var i = 0; i < tweets.length; i++) {
+				var tweetResults = tweets[i];
+				console.log(tweetResults.text);
+				console.log(tweetResults.created_at);
+				console.log("\n");
+			};
+		};
+	});
+
+
+    
+};
+
+
+
+
+
+
+
+
+
+
+
 // Spotify Request
 
 function spotifyResults(userChoice){
