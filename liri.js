@@ -28,40 +28,22 @@ switch (userInput) {
 
 // Twitter Request
 function showTweets(){
+	console.log("TWEETS");
 
-var Twitter = require('twitter');
+  	var params = {
+    	screen_name: 'claire_liri'
+  	};
 
-	var client = new Twitter({
-		consumer_key: consumerKey,
-		consumer_secret: consumerSecret,
-		access_token_key: tokenKey,
-		access_token_secret: tokenSecret
-	});
+  	client.get('statuses/user_timeline', params, function (error, tweets, response) {
+    	if (!error) {
+      		for (i = 0; i < tweets.length; i++) {
+        	console.log(tweets[i].text);
 
-	
-	client.get('https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=@claire_liri&count=3', function (error, tweets, response) {
-		if (!error) {
-			for (var i = 0; i < tweets.length; i++) {
-				var tweetResults = tweets[i];
-				console.log(tweetResults.text);
-				console.log(tweetResults.created_at);
-				console.log("\n");
-			};
-		};
-	});
-
-
-    
+      		}
+    	}
+  	});
+  
 };
-
-
-
-
-
-
-
-
-
 
 
 // Spotify Request
@@ -101,12 +83,6 @@ function spotifyResults(userChoice){
     })
 
 
-
-
-
-
-
-
 		// console.log(userChoice);
   //               // var data = data.tracks.items;
   //               // console.log(data[0].name); //song track name
@@ -116,27 +92,6 @@ function spotifyResults(userChoice){
   //               // console.log(data[0].artists[0].name); //artist's name
   //   });
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // OMDB function
