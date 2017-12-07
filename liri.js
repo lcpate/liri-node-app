@@ -50,13 +50,13 @@ function showTweets(){
 // Spotify Request
 
 function spotifyResults(userChoice){
- 
-	var spotify = new Spotify({
-  		id: 'e9bb7eb08ca14fdb8c1246fc666339bc',
-  		secret: '25ee7b378f0448c6834ba2a79877a96f'
-	});
 
-	// var spotify1 = new Spotify(keys.spotifyKeys);
+	// var spotify = new Spotify({
+ //  		id: 'e9bb7eb08ca14fdb8c1246fc666339bc',
+ //  		secret: '25ee7b378f0448c6834ba2a79877a96f'
+	// });
+
+	var spotify1 = new Spotify(keys.spotifyKeys);
 
 	this.userChoice = userChoice;
 
@@ -65,9 +65,9 @@ function spotifyResults(userChoice){
 	} else {
 		userChoice = userChoice;
 	}
-console.log(this.userChoice);
+// console.log(this.userChoice);
 
-	spotify.search({ type: 'track', query: userChoice, limit: 3}, function(err, data){
+	spotify1.search({ type: 'track', query: userChoice, limit: 3}, function(err, data){
 
 		if (!err) {
 			for (var i = 0; i < data.tracks.items.length; i++){
@@ -133,6 +133,7 @@ function movieResults(userChoice){
 
 }
 
+// Do what it says
 
 function doWhatItSays() {
 	
